@@ -143,7 +143,7 @@ public class Manager {
         }
 
     }
-
+//
     private void cancel_Reservation(int roomidx) {
         while (true) {
             System.out.println("예약을 취소하겠습니까? (Y/N)");
