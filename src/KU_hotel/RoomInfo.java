@@ -104,7 +104,7 @@ public class RoomInfo {
 
     public void reservation_Menu() {
         Scanner sc = new Scanner(System.in);
-
+        fromCsv();
         while(true) {
             System.out.println("<예약 메뉴>");
             System.out.println("---------------");
@@ -201,11 +201,11 @@ public class RoomInfo {
             }
         }
 
-        fromCsv();
+
         System.out.println("예약 가능 객실 리스트");
         ArrayList<RoomInfo> temproom = new ArrayList<RoomInfo>();
         for (RoomInfo room1 : rooms) {
-            if(room1.userName.equals("null")) {
+            if(room1.userName.equals("X")) {
                 System.out.println(room1.roomNum+"호 "+room1.price);
                 temproom.add(room1);
             }
@@ -324,11 +324,11 @@ public class RoomInfo {
                                 for (int i = 0; i < rooms.size(); i++) {
                                     if (rooms.get(i).PhoneNum == user.getPhoneNum()) {
                                         Main.FileLog(Main.date, rooms.get(i).userName, 12);
-                                        rooms.get(i).checkIn = null;
-                                        rooms.get(i).checkOut = null;
+                                        rooms.get(i).checkIn = "X";
+                                        rooms.get(i).checkOut = "X";
                                         rooms.get(i).personNum = 0;
-                                        rooms.get(i).PhoneNum = null;
-                                        rooms.get(i).userName = null;
+                                        rooms.get(i).PhoneNum = "X";
+                                        rooms.get(i).userName = "X";
                                     }
                                 }
                                 toCsv();

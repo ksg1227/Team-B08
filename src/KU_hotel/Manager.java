@@ -62,11 +62,11 @@ public class Manager {
         int count = 1;
         for (int i = 0; i < rooms.size(); i++) {
             if (rooms.get(i).getisAccept() == false) {
-                if (!rooms.get(i).getuserName().equals("null")) {
+                if (!rooms.get(i).getuserName().equals("X")) {
 
                     System.out.println(count + ") " + rooms.get(i).getuserName() +
                             "/" + rooms.get(i).getcheckIn() + " ~ " + rooms.get(i).getcheckOut()
-                            + "/" + rooms.get(i).getroomNum() + "/" + rooms.get(i).getpersonNum() + "인");
+                            + "/" + rooms.get(i).getroomNum() + "호실" + "/" + rooms.get(i).getpersonNum() + "인");
                     temprooms.add(rooms.get(i));
                     count++;
                 }
@@ -148,12 +148,14 @@ public class Manager {
             System.out.println("예약을 취소하겠습니까? (Y/N)");
             System.out.print(">> ");
             String c = sc.nextLine().trim();
+
+
             if (c.equals("Y")) {
-                rooms.get(roomidx).setcheckIn(null);
-                rooms.get(roomidx).setcheckOut(null);
+                rooms.get(roomidx).setcheckIn("X");
+                rooms.get(roomidx).setcheckOut("X");
                 rooms.get(roomidx).setpersonNum(0);
-                rooms.get(roomidx).setPhoneNum(null);
-                rooms.get(roomidx).setuserName(null);
+                rooms.get(roomidx).setPhoneNum("X");
+                rooms.get(roomidx).setuserName("X");
                 rooms.get(roomidx).setisAccept(false);
                 manager.toCsv();
                 return;
@@ -174,8 +176,8 @@ public class Manager {
         System.out.println("----------------");
         int count = 1;
         for (int i = 0; i < rooms.size(); i++) {
-            if (!rooms.get(i).getuserName().equals("null")) {
-                if (!rooms.get(i).getuserName().equals("null")) {
+            if (!rooms.get(i).getuserName().equals("X")) {
+                if (!rooms.get(i).getuserName().equals("X")) {
                     String temp = rooms.get(i).getuserName() + "/" + rooms.get(i).getPhoneNum() + "/" + rooms.get(i).getcheckIn() + " ~ "
                             + rooms.get(i).getcheckOut() + "/" + rooms.get(i).getroomNum() + "호/" + rooms.get(i).getpersonNum() + "인/";
                     if (rooms.get(i).getisAccept()) {
@@ -200,7 +202,7 @@ public class Manager {
             System.out.println("<노쇼 처리가 가능한 예약 리스트>");
             for (int i = 0; i < rooms.size(); i++) {
                 int num1 = Integer.parseInt(date);
-                if (rooms.get(i).getcheckOut().equals("null")) {
+                if (rooms.get(i).getcheckOut().equals("X")) {
                     continue;
                 }
                 int num2 = Integer.parseInt(rooms.get(i).getcheckOut());

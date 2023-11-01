@@ -129,7 +129,7 @@ public class Main {
                         } else {
                             System.out.println("관리자 메뉴로 이동합니다.");
                             FileLog(date, "Admin",2);
-//                            RoomInfo room = new RoomInfo();
+                            Manager m = new Manager();
                             break;
                         }
                     case "4":
